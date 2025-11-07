@@ -1,27 +1,40 @@
-import React from 'react';
-import { Download } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Moon, Sun, Download } from 'lucide-react';
 
-const Header = ({ onDownload }) => {
+export default function Header({ onResumeClick }) {
+  const [dark, setDark] = useState(true);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (dark) root.classList.add('dark');
+    else root.classList.remove('dark');
+  }, [dark]);
+
   return (
-    <header className="w-full sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 border-b border-gray-200">
-      <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500" />
-          <div>
-            <p className="text-sm text-gray-500">Portfolio</p>
-            <h1 className="text-lg font-semibold tracking-tight">Resume</h1>
+    <header className="fixed inset-x-0 top-0 z-40">
+      <div className="mx-auto max-w-6xl px-4 pt-5 md:px-8">
+        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/40 px-4 py-3 backdrop-blur">
+          <a href="#top" className="text-sm font-semibold tracking-wide text-white">Sanidh • Portfolio</a>
+          <div className="flex items-center gap-2">
+            <a href="#projects" className="hidden text-sm text-white/80 hover:text-white md:block">Projects</a>
+            <a href="#about" className="hidden text-sm text-white/80 hover:text-white md:block">About</a>
+            <a href="#contact" className="hidden text-sm text-white/80 hover:text-white md:block">Contact</a>
+            <button
+              onClick={onResumeClick}
+              className="cursor-hover inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-500/30"
+            >
+              <Download size={16} /> Resume
+            </button>
+            <button
+              onClick={() => setDark((d) => !d)}
+              className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white"
+              aria-label="Toggle theme"
+            >
+              {dark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
           </div>
         </div>
-        <button
-          onClick={onDownload}
-          className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-        >
-          <Download className="h-4 w-4" />
-          Download PDF
-        </button>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

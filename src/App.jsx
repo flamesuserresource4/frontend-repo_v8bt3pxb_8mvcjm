@@ -1,44 +1,46 @@
-import React, { useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import Header from './components/Header';
-import ProfileCard from './components/ProfileCard';
-import Experience from './components/Experience';
-import Footer from './components/Footer';
+import Hero3D from './components/Hero3D';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 
-const App = () => {
-  const resumeRef = useRef(null);
+function App() {
+  useEffect(() => {
+    // Hide default cursor for custom one
+    document.documentElement.style.cursor = 'none';
+    document.body.style.cursor = 'none';
+    return () => {
+      document.documentElement.style.cursor = '';
+      document.body.style.cursor = '';
+    };
+  }, []);
 
-  const handleDownload = () => {
-    // Approach: We ship a hidden PDF asset in the public folder path 
-    // and programmatically trigger a download for better cross-browser support.
+  const handleResume = useCallback(() => {
+    // Create a hidden link to trigger download/open of resume file
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Alex_Johnson_Resume.pdf';
+    link.href = '/Sanidh-Resume.html';
+    link.download = 'Sanidh-Resume.html';
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
-  };
+    link.remove();
+  }, []);
+
+  const profilePhoto = '/sanidh-profile.jpg';
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50 text-gray-900">
-      <Header onDownload={handleDownload} />
-
-      <main>
-        <ProfileCard />
-        <Experience />
-
-        {/* Hidden note for users without a PDF present */}
-        <div className="mx-auto max-w-5xl px-4">
-          <div className="rounded-xl border border-dashed border-indigo-200 bg-indigo-50/40 p-4 text-sm text-indigo-700">
-            <p>
-              Tip: Place your resume file at the project root under <code>public/resume.pdf</code> to enable the download button.
-            </p>
-          </div>
-        </div>
+    <div id="top" className="min-h-screen bg-black text-white">
+      <Header onResumeClick={handleResume} />
+      <main className="pt-20">
+        <Hero3D />
+        <About photoUrl={profilePhoto} />
+        <Projects />
+        <Contact />
       </main>
-
-      <Footer />
+      <CustomCursor />
     </div>
   );
-};
+}
 
 export default App;

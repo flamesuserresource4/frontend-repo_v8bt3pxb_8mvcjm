@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanidh • Resume</title>
+  <style>
+    :root{--bg:#0b0b12;--fg:#e8e8ff;--muted:#b6b6d8;--pill:#1b1b28;--accent1:#8b5cf6;--accent2:#22d3ee}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    .container{max-width:900px;margin:40px auto;padding:32px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;backdrop-filter:blur(6px)}
+    h1{margin:0 0 6px;font-size:34px}
+    h2{margin:28px 0 10px;font-size:20px;color:#fff}
+    p,li{color:var(--muted)}
+    .row{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--pill);border:1px solid rgba(255,255,255,.08);color:#dfe0ff;font-size:12px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    hr{border:none;height:1px;background:rgba(255,255,255,.08);margin:22px 0}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+        <h1>Sanidh <span class="accent">• Student Developer</span></h1>
+        <p>Interactive web, 3D experiences, and smooth motion. B.Tech completing in ~8 months.</p>
+        <div class="row">
+          <span class="pill">React</span>
+          <span class="pill">Tailwind</span>
+          <span class="pill">Framer Motion</span>
+          <span class="pill">Spline</span>
+        </div>
+      </div>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="grid">
+      <div>
+        <strong>Interactive 3D Landing</strong>
+        <p>Spline-powered hero section with micro-interactions and focus on performance.</p>
+      </div>
+      <div>
+        <strong>Student Task Tracker</strong>
+        <p>Responsive task planner with delightful feedback and dark-first design.</p>
+      </div>
+    </div>
+
+    <h2>Education</h2>
+    <p>B.Tech (in progress) — expected completion in 8 months</p>
+
+    <h2>Contact</h2>
+    <p>Email: sanidh@example.com • GitHub/LinkedIn on request</p>
+
+    <hr />
+    <p style="font-size:12px;color:#9aa">Replace this HTML with your full resume when ready. This file was generated as a starting point.</p>
+  </div>
+</body>
+</html>
