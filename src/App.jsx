@@ -1,28 +1,44 @@
-import { useState } from 'react'
+import React, { useRef } from 'react';
+import Header from './components/Header';
+import ProfileCard from './components/ProfileCard';
+import Experience from './components/Experience';
+import Footer from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const resumeRef = useRef(null);
+
+  const handleDownload = () => {
+    // Approach: We ship a hidden PDF asset in the public folder path 
+    // and programmatically trigger a download for better cross-browser support.
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Alex_Johnson_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-gradient-to-b from-white to-indigo-50 text-gray-900">
+      <Header onDownload={handleDownload} />
 
-export default App
+      <main>
+        <ProfileCard />
+        <Experience />
+
+        {/* Hidden note for users without a PDF present */}
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="rounded-xl border border-dashed border-indigo-200 bg-indigo-50/40 p-4 text-sm text-indigo-700">
+            <p>
+              Tip: Place your resume file at the project root under <code>public/resume.pdf</code> to enable the download button.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
