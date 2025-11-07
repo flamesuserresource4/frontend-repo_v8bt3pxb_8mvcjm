@@ -5,11 +5,11 @@ export default function Hero3D() {
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden bg-[#0b0b12]">
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
       {/* Gradient overlays for mood */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
       <div className="pointer-events-none absolute -inset-x-10 -inset-y-20 bg-[radial-gradient(ellipse_at_center,rgba(124,58,237,0.35),transparent_60%)]" />
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start px-6 pt-24 md:px-10 md:pt-28">
@@ -39,7 +39,7 @@ export default function Hero3D() {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="mt-5 max-w-2xl text-left text-base text-white/80 md:text-lg"
         >
-          Passionate about interactive web experiences, 3D graphics, and smooth animations. Completing my B.Tech in 8 months. Built two hands-on projects showcasing strong fundamentals and curiosity.
+          Dark, futuristic hero with a cyberpunk vibe. Smooth motion and interaction powered by Spline & Framer Motion.
         </motion.p>
 
         <motion.div
@@ -50,15 +50,15 @@ export default function Hero3D() {
         >
           <a
             href="#projects"
-            className="cursor-hover inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition-transform hover:scale-[1.03] focus:outline-none"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition-transform hover:scale-[1.03] focus:outline-none"
           >
             View Projects
           </a>
           <a
-            href="#contact"
-            className="cursor-hover inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
+            href="#pages3d"
+            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/20"
           >
-            Contact Me
+            3D Pages
           </a>
         </motion.div>
       </div>
